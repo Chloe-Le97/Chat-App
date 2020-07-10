@@ -1,0 +1,19 @@
+.home-container {
+  margin-top: 20px;
+  min-height: 90vh;
+  margin-left: 20px;
+  width: 80%;
+  background-color: rgb(199, 223, 255);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.navbar-nav {
+  text-align: center;
+}
+.account {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}

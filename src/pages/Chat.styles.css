@@ -1,0 +1,76 @@
+.chat-bubble {
+  width: 100%;
+  margin-top: 10px;
+}
+.current-mess {
+  margin-left: auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: 80%;
+  overflow: hidden;
+  text-align: justify;
+}
+.current-mess .chat-container {
+  padding: 10px;
+  background-color: blanchedalmond;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.current-mess .chat-time {
+  font-size: 13px;
+  text-align: right;
+  width: 95%;
+  margin-left: auto;
+}
+
+.other-mess {
+  margin-right: auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: 80%;
+  overflow: hidden;
+  text-align: justify;
+}
+.other-mess .chat-container {
+  background-color: cadetblue;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.other-mess .chat-time {
+  font-size: 13px;
+  width: 95%;
+  margin-right: auto;
+}
+.form {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+.input {
+  width: 80%;
+}
+.send {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+}
+.user {
+  text-align: center;
+}
+/* .chat-container {
+  margin-top: 20px;
+  min-height: 90vh;
+  margin-left: 20px;
+  width: 30%;
+  background-color: rgb(199, 223, 255);
+  padding: 10px;
+} */
+.btn {
+  margin-left: 10px;
+}
+.userName {
+  margin-left: 7px;
+  margin-bottom: 5px;
+}

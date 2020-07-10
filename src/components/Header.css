@@ -1,0 +1,14 @@
+.header-container {
+  width: 78.5%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  left: 20px;
+  top: 25px;
+  background-color: rgba(116, 155, 207, 0.856);
+  padding: 20px;
+}
+.header-btn {
+  margin-left: 10px;
+  cursor: pointer;
+}

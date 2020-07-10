@@ -1,0 +1,50 @@
+.info-container {
+  width: 90%;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+}
+.editbtn {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  visibility: hidden;
+}
+.userinfo input {
+  width: 40%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid transparent;
+  font-size: 20px;
+  background-color: rgb(199, 223, 255);
+}
+.profile-form:hover .userName {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+.profile-form:hover .editbtn {
+  visibility: visible;
+}
+.userinfo input:hover {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+.userinfo {
+  width: 30%;
+  margin: 0 auto;
+  line-height: 25px;
+}
+.profile-form {
+  font-size: 20px;
+  width: 100%;
+  background-color: rgb(199, 223, 255);
+}
