@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { signup } from "../helpers/auth";
+import { signup, signInWithGoogle } from "../helpers/auth";
+import { db } from "../services/firebase";
+import logo from "../assets/Group35.png";
+import "./SignUp.css";
 
 class Signup extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class Signup extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.googleSignIn = this.googleSignIn.bind(this);
   }
 
   handleChange(event) {
@@ -41,78 +45,102 @@ class Signup extends React.Component {
     }
   }
 
+  async googleSignIn() {
+    try {
+      await this.setState({ error: "" });
+      await signInWithGoogle();
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
+  }
   render() {
     return (
-      <div className="container2">
+      <div className="home-container">
         <div></div>
-        <form className="form-auth" onSubmit={this.handleSubmit}>
-          <h1>
-            <p className="title-login">Sign Up to</p>
-            <Link className="title2" to="/">
-              Chat App
-            </Link>
-          </h1>
-          <p>Fill in the form below to create an account</p>
-          <div className="form-group">
-            <input
-              placeholder="Username"
-              name="username"
-              type="username"
-              onChange={this.handleChange}
-              value={this.state.username}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            ></input>
-          </div>
-          <div className="form-group">
-            <input
-              placeholder="Repeat Password"
-              name="confirmPassword"
-              onChange={this.handleChange}
-              value={this.state.confirmPassword}
-              type="password"
-            ></input>
-          </div>
-          <div>
-            {this.state.error ? (
-              <div className="form-error">{this.state.error}</div>
-            ) : null}
-            <button className="signUpBtn" type="submit">
-              Sign Up
-            </button>
-          </div>
-        </form>
-
         <div>
-          <div className="already">
-            Already have an account?{" "}
-            <Link className="other" to="/login">
-              Login
-            </Link>
-          </div>
+          <Link to="/">
+            <div className="login-logo"></div>
+          </Link>
+          <form className="form-auth" onSubmit={this.handleSubmit}>
+            <div className="form-title">
+              <h1>Sign Up</h1>
+            </div>
 
-          <div className="reset">
-            Forget your password?
-            <Link className="forgot" to="/resetPassword">
-              Reset Password
-            </Link>
-          </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                placeholder="Username"
+                name="username"
+                type="username"
+                onChange={this.handleChange}
+                value={this.state.username}
+              ></input>
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                placeholder="Email"
+                name="email"
+                type="email"
+                onChange={this.handleChange}
+                value={this.state.email}
+              ></input>
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                placeholder="Password"
+                name="password"
+                onChange={this.handleChange}
+                value={this.state.password}
+                type="password"
+              ></input>
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                placeholder="Repeat Password"
+                name="confirmPassword"
+                onChange={this.handleChange}
+                value={this.state.confirmPassword}
+                type="password"
+              ></input>
+            </div>
+            <div>
+              {this.state.error ? (
+                <div className="form-error">{this.state.error}</div>
+              ) : null}
+              <div>
+                <button className="loginbtn" type="submit">
+                  Sign Up
+                </button>
+              </div>
+              <div>
+                <button
+                  className="loginGg"
+                  type="button"
+                  onClick={this.googleSignIn}
+                >
+                  Sign In With Google
+                </button>
+              </div>
+            </div>
+            <div>
+              <div className="already">
+                Already have an account?{" "}
+                <Link className="other" to="/login">
+                  Login
+                </Link>
+              </div>
+
+              <div className="reset">
+                Forget your password?
+                <Link className="forgot" to="/resetPassword">
+                  Reset Password
+                </Link>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     );

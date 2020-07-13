@@ -2,6 +2,8 @@ import React from "react";
 import { resetPassword } from "../helpers/auth";
 import Header from "../components/Header";
 import "./resetPassword.css";
+import logo2 from "../assets/Group35.png";
+import { Link } from "react-router-dom";
 
 class ResetPassword extends React.Component {
   constructor(props) {
@@ -35,9 +37,12 @@ class ResetPassword extends React.Component {
 
   render() {
     return (
-      <div className="container2">
+      <div className="home-container">
         <Header />
-        <form className="reset-form" onSubmit={this.resetPassword}>
+        <Link to="/">
+          <img src={logo2} className="login-logo"></img>
+        </Link>
+        <form className="profile-container" onSubmit={this.resetPassword}>
           <div className="forget">
             Please type your email below for information about password reset
           </div>

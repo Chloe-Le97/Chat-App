@@ -6,8 +6,10 @@ import "./Header.css";
 function Header() {
   return (
     <div className="header-container">
-      <button>
-        <Link to="/">Home</Link>
+      <button className="tohome-btn">
+        <Link className="tohome" to="/">
+          Home
+        </Link>
       </button>
       {auth().currentUser ? (
         <div className="navbar-nav">
@@ -18,7 +20,7 @@ function Header() {
           </button>
           <button className="header-btn">
             <Link className="nav-item" to="/chat">
-              Chat Box
+              Chat
             </Link>
           </button>
           <button className="header-btn" onClick={() => auth().signOut()}>

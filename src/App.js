@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import { auth } from "./services/firebase";
 import ResetPassword from "./pages/resetPassword";
+import Loading from "./Loading";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -72,7 +73,7 @@ class App extends Component {
 
   render() {
     return this.state.loading === true ? (
-      <h2>Loading...</h2>
+      <Loading />
     ) : (
       <Router>
         <Switch>

@@ -2,6 +2,8 @@ import React from "react";
 import { auth } from "../services/firebase";
 import Header from "../components/Header";
 import logo from "../assets/edit.png";
+import logo2 from "../assets/Group35.png";
+import { Link } from "react-router-dom";
 import "./Profile.css";
 
 export default class Profile extends React.Component {
@@ -53,14 +55,17 @@ export default class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="home-container">
         <Header />
-        <div className="home-container">
+        <div className="container4">
+          <Link to="/">
+            <img src={logo2} className="login-logo"></img>
+          </Link>
           {!auth().currentUser.emailVerified ? (
-            <div className="email-confirm">
+            <div className="profile-container">
               <h1>Please verify your email address</h1>
               <p>
-                In order to use "Chat App", you need to confirm your email
+                In order to use "Penguime", you need to confirm your email
                 address
               </p>
               <button
@@ -72,40 +77,43 @@ export default class Profile extends React.Component {
               </button>
             </div>
           ) : (
-            <>
-              <h2 className="title">User's Profile</h2>
-              <div className="userinfo">
-                {/* <div>{this.state.originName}</div> */}
-                <form onSubmit={this.editName} className="profile-form">
-                  <strong>
-                    <label htmlFor="userName">Username:</label>
-                  </strong>
-                  <input
-                    placeholder="New UserName"
-                    name="userName"
-                    onChange={this.handleChange}
-                    value={this.state.userName}
-                    type="userName"
-                    className="userName"
-                  />
-                  <img
-                    src={logo}
-                    className="editbtn"
-                    onClick={this.editName}
-                  ></img>
-                </form>
-                <div>
+            <div className="profile-container">
+              <h1 className="title">Profile</h1>
+              <div className="info-container">
+                <div className="userinfo">
+                  {/* <div>{this.state.originName}</div> */}
+                  <form onSubmit={this.editName} className="profile-form">
+                    <strong>
+                      <label htmlFor="userName">Username:</label>
+                    </strong>
+                    <input
+                      placeholder="New UserName"
+                      name="userName"
+                      onChange={this.handleChange}
+                      value={this.state.userName}
+                      type="userName"
+                      className="userName"
+                    />
+                    <img
+                      src={logo}
+                      className="editbtn"
+                      onClick={this.editName}
+                    ></img>
+                  </form>
+                </div>
+                <div className="userinfo">
                   {" "}
                   <strong>Email:</strong> {this.email}
                 </div>
-                <div>
+                <div className="userinfo">
                   {" "}
                   <strong> Join date:</strong> {this.creationDate}
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
+        <div></div>
       </div>
     );
   }

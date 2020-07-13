@@ -1,0 +1,67 @@
+.loading-container {
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #273e78;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+.loading-img {
+  display: block;
+  margin: 0 auto;
+}
+.loading {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 25px;
+}
+#right-hand {
+  animation: righthand 1s ease-in-out infinite;
+  transform-box: fill-box;
+  /* transform: translate(70px, 45px); */
+}
+
+@keyframes righthand {
+  from {
+    transform: translate(100px, 60px) rotate(10deg);
+  }
+  50% {
+    transform: translate(100px, 60px) rotate(25deg);
+  }
+  100% {
+    transform: translate(100px, 60px) rotate(10deg);
+  }
+}
+#left-hand {
+  animation: lefthand 1s ease-in-out infinite;
+  transform-origin: 100%;
+  transform-box: fill-box;
+}
+
+@keyframes lefthand {
+  from {
+    transform: translate(15px, 61px) rotate(-10deg);
+  }
+  50% {
+    transform: translate(15px, 61px) rotate(-25deg);
+  }
+  100% {
+    transform: translate(15px, 61px) rotate(-10deg);
+  }
+}
+#Frame1 {
+  animation: fly 1s ease-in-out infinite;
+}
+@keyframes fly {
+  from {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(2px);
+  }
+}

@@ -1,19 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #273e78;
+}
 .home-container {
-  margin-top: 20px;
-  min-height: 90vh;
-  margin-left: 20px;
-  width: 80%;
-  background-color: rgb(199, 223, 255);
-  padding: 10px;
+  min-height: 100vh;
+  background-color: #273e78;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
 .navbar-nav {
   text-align: center;
 }
 .account {
-  width: 50%;
-  margin: 0 auto;
+  width: 300px;
+  margin: 20px auto;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.welcome {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
+.home-btn {
+  text-decoration: none;
+  color: white;
+
+  font-size: 20px;
+}
+.home-btn:hover {
+  color: #ffbb00;
+}
+.home-logo {
+  display: block;
+  margin: 0 auto;
+  background-image: url("../assets/Group41.png");
+  width: 274px;
+  height: 174px;
+}
+.home-logo:hover {
+  background-image: url("../assets/Group47.png");
+  width: 274px;
+  height: 174px;
 }

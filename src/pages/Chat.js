@@ -4,6 +4,8 @@ import { db } from "../services/firebase";
 import Header from "../components/Header";
 import "./Chat.styles.css";
 import logo from "../assets/send.png";
+import logo2 from "../assets/Group35.png";
+import { Link } from "react-router-dom";
 
 export default class Chat extends Component {
   constructor(props) {
@@ -33,6 +35,10 @@ export default class Chat extends Component {
     } catch (error) {
       this.setState({ readError: error.message });
     }
+    this.scrollToBottom();
+  }
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
   handleChange(event) {
     this.setState({
@@ -81,6 +87,14 @@ export default class Chat extends Component {
     }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
     return time;
   }
+  scrollToBottom = () => {
+    const { userList } = this.refs;
+    userList.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  };
 
   render() {
     return (
@@ -88,54 +102,61 @@ export default class Chat extends Component {
         <Header />
         <div className="home-container">
           {!this.state.user.emailVerified ? (
-            <div className="email-confirm">
-              <h1>Please verify your email address</h1>
-              <p>
-                In order to use "Chat App", you need to confirm your email
-                address
-              </p>
-              <button
-                className="verify-btn"
-                type="button"
-                onClick={this.userVerification}
-              >
-                Verify email address
-              </button>
-            </div>
+            <>
+              <Link to="/">
+                <img src={logo2} className="login-logo"></img>
+              </Link>
+              <div className="profile-container">
+                <h1>Please verify your email address</h1>
+                <p>
+                  In order to use "Penguime", you need to confirm your email
+                  address
+                </p>
+                <button
+                  className="verify-btn"
+                  type="button"
+                  onClick={this.userVerification}
+                >
+                  Verify email address
+                </button>
+              </div>
+            </>
           ) : (
             <>
-              {this.state.chats.map((chat) => {
-                return (
-                  <div
-                    key={chat.timestamp}
-                    className={
-                      "chat-bubble " +
-                      (this.state.user.uid === chat.uid
-                        ? "current-mess"
-                        : "other-mess")
-                    }
-                  >
-                    {chat.username ? (
-                      <div className="userName">{chat.username}</div>
-                    ) : (
-                      <div className="userName">{chat.email}</div>
-                    )}
-                    <div className="chat-container">
-                      {chat.content}
-                      <br />
-                      <div className="chat-time">
-                        {this.formatTime(chat.timestamp)}
+              <div class="container2">
+                {this.state.chats.map((chat) => {
+                  return (
+                    <div
+                      key={chat.timestamp}
+                      className={
+                        "chat-bubble " +
+                        (this.state.user.uid === chat.uid
+                          ? "current-mess"
+                          : "other-mess")
+                      }
+                    >
+                      {chat.username ? (
+                        <div className="userName">{chat.username}</div>
+                      ) : (
+                        <div className="userName">{chat.email}</div>
+                      )}
+                      <div className="chat-container">
+                        {chat.content}
+                        <br />
+                        <div className="chat-time">
+                          {this.formatTime(chat.timestamp)}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-
+                  );
+                })}
+              </div>
               <form onSubmit={this.handleSubmit} className="form">
                 <input
                   onChange={this.handleChange}
                   value={this.state.content}
                   className="input"
+                  placeholder="Type your message here"
                 ></input>
                 {this.state.error ? <p>{this.state.writeError}</p> : null}
                 <img
@@ -144,18 +165,19 @@ export default class Chat extends Component {
                   onClick={this.handleSubmit}
                 ></img>
               </form>
-
-              {this.state.user.displayName ? (
-                <div className="user">
-                  {" "}
-                  Login in as : {this.state.user.displayName}
-                </div>
-              ) : (
-                <div className="user">
-                  {" "}
-                  Login in as : {this.state.user.email}
-                </div>
-              )}
+              <div ref="userList">
+                {this.state.user.displayName ? (
+                  <div className="user">
+                    {" "}
+                    Login in as : {this.state.user.displayName}
+                  </div>
+                ) : (
+                  <div className="user">
+                    {" "}
+                    Login in as : {this.state.user.email}
+                  </div>
+                )}
+              </div>
             </>
           )}
         </div>

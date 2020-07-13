@@ -1,6 +1,13 @@
-.info-container {
-  width: 90%;
+.profile-container {
+  width: 600px;
   margin: 0 auto;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  min-height: 50vh;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
 }
 .title {
   text-align: center;
@@ -21,7 +28,7 @@
   border-right: none;
   border-bottom: 2px solid transparent;
   font-size: 20px;
-  background-color: rgb(199, 223, 255);
+  background-color: #dde3f2;
 }
 .profile-form:hover .userName {
   border-top: none;
@@ -38,13 +45,36 @@
   border-right: none;
   border-bottom: 2px solid black;
 }
+
 .userinfo {
-  width: 30%;
-  margin: 0 auto;
+  width: 90%;
   line-height: 25px;
+  text-align: left;
+  margin: 0 auto;
+  background: #dde3f2;
+  border-radius: 9px;
+  margin-top: 20px;
+  font-size: 17px;
+  padding: 10px;
 }
 .profile-form {
   font-size: 20px;
-  width: 100%;
-  background-color: rgb(199, 223, 255);
+  width: fit-content;
+}
+.info-container {
+  margin-top: 50px;
+}
+.home-container {
+  margin-top: 10px;
+}
+.container4 {
+  margin-top: 60px;
+}
+@media only screen and (max-width: 600px) {
+  .profile-container {
+    width: 83%;
+  }
+  .container4 {
+    margin-top: 70px;
+  }
 }
